@@ -12,22 +12,21 @@ import {
   GET_LIST_REJECTED,
 } from './constants';
 
-export const initialState = fromJS({
-  data: {},
-});
+export const initialState = fromJS({});
 
 function listReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
-      return state;
+      return state.merge({ loading: false });
     case GET_LIST_PENDING:
-      return state;
+      return state.merge({ loading: false });
     case GET_LIST_FULFILLED:
       return state.merge({
-        data: action.payload,
+        ...action.payload,
+        loading: true,
       });
     case GET_LIST_REJECTED:
-      return state;
+      return state.merge({ loading: false });
     default:
       return state;
   }

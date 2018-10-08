@@ -15,11 +15,23 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectList from './selectors';
 import { getListAction } from './actions';
 import reducer from './reducer';
+import { ListContainer } from './style';
+import Album from '../../components/Album';
 
 /* eslint-disable react/prefer-stateless-function */
 export class List extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   componentWillMount() {
     this.getList();
+  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('next props', nextProps.list.data.items);
+  // }
+  componentDidUpdate() {
+    // console.log('did updates', this.props.list);
   }
 
   getList = () => {
@@ -27,16 +39,24 @@ export class List extends React.PureComponent {
   };
 
   render() {
-    const { data } = this.props.list || {};
-    // console.log('data', data);
+    const { list } = this.props;
+    // console.log('props', list.data);
     return (
-      <div>
+      <ListContainer>
         <Helmet>
-          <title>List Page</title>
+          <title>List page</title>
           <meta name="description" content="Description of List" />
         </Helmet>
-        <div>{data.original_title}</div>
-      </div>
+        {!list.loading ? (
+          <span>Loading....</span>
+        ) : (
+          <Album
+            items={list.items}
+            description={list.description}
+            name={list.name}
+          />
+        )}
+      </ListContainer>
     );
   }
 }
