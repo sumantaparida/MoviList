@@ -18,10 +18,6 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
 /* eslint-disable react/prefer-stateless-function */
 const styles = theme => ({
@@ -75,12 +71,6 @@ const styles = theme => ({
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 class Album extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      age: 24,
-    };
-  }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -124,29 +114,6 @@ class Album extends React.PureComponent {
                       Watch
                     </Button>
                   </Grid>
-                  <Grid item>
-                    {/* <Button variant="outlined" color="primary">
-                      Secondary action
-                    </Button> */}
-                    <FormControl className={classes.formControl}>
-                      <InputLabel htmlFor="age-simple">filter</InputLabel>
-                      <Select
-                        value={this.state.age}
-                        onChange={this.handleChange}
-                        inputProps={{
-                          name: 'age',
-                          id: 'age-simple',
-                        }}
-                      >
-                        <MenuItem value="">
-                          <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
                 </Grid>
               </div>
             </div>
@@ -159,7 +126,7 @@ class Album extends React.PureComponent {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${
+                      image={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
                         card.poster_path
                       }`}
                       title="Image title"
@@ -175,7 +142,11 @@ class Album extends React.PureComponent {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
+                      <Button
+                        size="small"
+                        href={`/Movie/${card.id}`}
+                        color="primary"
+                      >
                         View
                       </Button>
                     </CardActions>

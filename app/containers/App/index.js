@@ -15,6 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import List from 'containers/List/Loadable';
+import Movie from 'containers/Movie/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={List} />
+        <Route exact path="/Movie/:id" component={Movie} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
