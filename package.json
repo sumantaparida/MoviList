@@ -12,7 +12,7 @@
   },
   "author": "Sumanta Parida",
   "license": "MIT",
-  "homepage": "https://sumantaparida.github.io/MoviList/",
+  "homepage": "https://sumantaparida.github.io/",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
