@@ -111,7 +111,7 @@ class Album extends React.PureComponent {
                 <Grid container spacing={16} justify="center">
                   <Grid item>
                     <Button variant="contained" color="primary">
-                      Watch
+                      Watch Movie
                     </Button>
                   </Grid>
                 </Grid>
